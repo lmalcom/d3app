@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="js/libs/jquery.js"></script>
+		<script src="js/libs/d3.js"></script>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+	</head>
+	<body id="visualisation">
+	</body>
+	<script>
+		//set random(?) number of objects
+		
+
+		var treeData = function(){
+			var arr = []; 
+			function createBranches(numRepeat){
+				var arr2 = []; 
+				for(var i = 0; i < Math.floor(Math.random()*3 + 2); i++){
+					if(numRepeat > 1){
+						arr2.push( {name:'', contents: createBranches(numRepeat - 1)} ); 
+					}else{ 
+						arr2.push( {contents: []} ); 
+					}
+				}
+				return arr2; 
+			}
+			arr = createBranches(3); 
+			console.log(arr); 
+			return {
+				name:'/', 
+				contents:arr
+			}
+			/*return {
+				name:'/', 
+				contents: [
+					{
+						name: '', 
+						contents: [
+							{
+								name: '', 
+								contents: []
+							}, 
+							{
+								name: '', 
+								contents: []
+							}, 
+							{
+								name: '', 
+								contents: [
+									{
+										name: '', 
+										contents: []
+									}, 
+									{
+										name: '', 
+										contents: []
+									}, 
+									{
+										name: '', 
+										contents: []
+									}, 
+									{
+										name: '', 
+										contents: []
+									}, 
+								]
+							}, 
+							{
+								name: '', 
+								contents: []
+							}, 
+						]
+					}, 
+					{
+						name: '', 
+						contents: []
+					}, 
+					{
+						name: '', 
+						contents: []
+					}, 
+					{
+						name: '', 
+						contents: [
+									{
+										name: '', 
+										contents: []
+									}, 
+									{
+										name: '', 
+										contents: []
+									}, 
+									{
+										name: '', 
+										contents: []
+									}, 
+									{
+										name: '', 
+										contents: []
+									}, 
+								]
+					}, 
+				]
+			}*/
+		}
+		var maxLabelLength = 10; 
+		var options = {nodeRadius: 50}; 
+
+		var tree = d3.layout.tree()
+		    .sort(null)
+		    .size([600, 800])
+		    .children(function(d)
+		    {
+		        return (!d.contents || d.contents.length === 0) ? null : d.contents;
+		    });
+
+		var layoutRoot = d3.select('#visualisation')
+		     .append("svg:svg")
+		     .append("svg:g")
+		     .attr("class", "container")
+		     .attr("transform", "translate(" + maxLabelLength + options.nodeRadius + "px,0)");
+
+
+		 // Edges between nodes as a <path class="link" />
+		 var link = d3.svg.diagonal()
+		     .projection(function(d)
+		     {
+		     	var y, x; 
+	    		x = d.children ? d.x : 300, 
+	    		y = d.children ? d.y : 800; 
+		        return [y, x];
+		     });
+
+		function anim(){
+			var nodes = tree.nodes(treeData());
+			var links = tree.links(nodes);
+			var lr = layoutRoot.selectAll("path.link")
+			    .data(links);
+			lr.enter()
+				 .insert("svg:path")
+			     .attr("class", "link")
+			     .attr("d", link)
+			lr.transition().duration(2000)
+			    .attr("d", link) 
+			lr.exit()
+			 	.remove();
+
+			var nodeGroup = layoutRoot.selectAll("g.node")
+			     .data(nodes);
+			nodeGroup.enter()
+				    .append("svg:g")
+				    .attr("class", "node")
+				    .attr("transform", function(d)
+				    	{
+				    		var y, x; 
+				    		x = d.children ? d.x : 300, 
+				    		y = d.children ? d.y : 800; 
+				        	return "translate(" + y + "," + x + ")";
+				    	})
+					.append("svg:circle")
+				    .attr("class", "node-dot")
+				    .attr("r", function(d, ind){
+				     	return Math.random()*options.nodeRadius
+				    });
+			nodeGroup.transition().duration(1000)
+				.attr("transform", function(d)
+			    	{
+			    		var y, x; 
+			    		x = d.children ? d.x : 300, 
+			    		y = d.children ? d.y : 800; 
+			        	return "translate(" + y + "," + x + ")";
+			    	})
+				.attr("r", function(d, ind){
+			     	return options.nodeRadius/ind
+			    });
+			nodeGroup.exit()
+				.attr('fill', 'rgba(255,255,255, 1)')
+			 	.remove(); 
+
+			setTimeout(anim, 4000); 
+		}
+		anim(); 
+	</script>
+</html>

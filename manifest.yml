@@ -1,0 +1,17 @@
+--- 
+applications: 
+  .: 
+    name: lerenzo
+    framework: 
+      name: node
+      info: 
+        mem: 64M
+        description: Node.js Application
+        exec: 
+    infra: aws
+    url: lerenzo.aws.af.cm
+    mem: 128M
+    instances: 1
+    services: 
+      Mongo: 
+        type: mongodb
