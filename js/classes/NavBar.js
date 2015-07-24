@@ -123,27 +123,27 @@ define(['jquery', 'underscore', 'backbone', 'UIElement', 'TextButton', 'ImageBut
 				btns = [
 					{
 						text: 'Sections', 
-						src: 'images/icons/menu.svg'
+						src: '/media/images/icons/menu.svg'
 					},
 					{
 						text: 'Profile', 
-						src: 'images/icons/user.svg'
+						src: '/media/images/icons/user.svg'
 					}, 
 					{
 						text: 'About', 
-						src: 'images/icons/info.svg'
+						src: '/media/images/icons/info.svg'
 					}, 
 					{
 						text: 'Contact', 
-						src: 'images/icons/mail.svg'
+						src: '/media/images/icons/mail.svg'
 					}, 
 					{
 						text: 'Login', 
-						src: 'images/icons/enter.svg'
+						src: '/media/images/icons/enter.svg'
 					}, 
 					{
 						text:'Search', 
-						src: 'images/icons/search.svg'
+						src: '/media/images/icons/search.svg'
 					}
 				]; 
 				_.each(btns, function(btn){

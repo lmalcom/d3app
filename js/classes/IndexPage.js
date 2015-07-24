@@ -60,7 +60,7 @@ define(['jquery', 'underscore', 'backbone', 'Page', 'TextButton', 'Image'], func
 			var collection, img, btn1, btn2; 
 
 			//initialize objects on page 
-			img = new Image.Model({src:'images/logo.png'}); 
+			img = new Image.Model({src:'/media/images/logo.png'}); 
 			btn1 = new TextButton.Model({text:'Sign up'}); 
 			btn2 = new TextButton.Model({text:'Login'}); 
 

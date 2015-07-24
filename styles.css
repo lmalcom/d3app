@@ -263,6 +263,8 @@ form label {
 	margin:auto auto; 
 	max-width:1080px;
 	min-width:400px;
+	width: 100%;
+  	overflow: visible;
 } 
 .node{
 	cursor:pointer; 

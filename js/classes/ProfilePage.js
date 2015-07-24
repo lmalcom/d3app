@@ -24,7 +24,7 @@ define(['jquery', 'underscore', 'backbone', 'Page', 'TextButton', 'Form', 'Image
 			form = new Form.Model({
 				action: 'http://ec2-54-242-145-25.compute-1.amazonaws.com:8000/restapi/update_profile/', 
 				inputs: [
-					{type:"file", label: 'Profile Image', src:'images/icons/user.svg', name: "image"},
+					{type:"file", label: 'Profile Image', src:'/media/images/icons/user.svg', name: "image"},
 					{type:"text", label:'Name', text: 'Name', name:'name'}, 
 					{type:"text", label:'Organization', text: 'Organization Affiliation', name:'org'},
 					{type:"textarea", label:'Description', text: 'Description', name:'description'}					
@@ -50,7 +50,7 @@ define(['jquery', 'underscore', 'backbone', 'Page', 'TextButton', 'Form', 'Image
 						form = new Form.Model({
 							action: 'http://ec2-54-242-145-25.compute-1.amazonaws.com:8000/restapi/update_profile/', 
 							inputs: [
-								{type:"file", label: 'Profile Image', src: ('http://ec2-54-242-145-25.compute-1.amazonaws.com:8000' + data.image || 'images/icons/user.svg'), name: "image"},
+								{type:"file", label: 'Profile Image', src: ('http://ec2-54-242-145-25.compute-1.amazonaws.com:8000' + data.image || '/media/images/icons/user.svg'), name: "image"},
 								{type:"text", label:'Name', text: (data.name || 'Name'), name:'name', value: (data.name || 'Name')}, 
 								{type:"text", label:'Organization', text: (data.organization || 'Organization Affiliation'), value: (data.organization || ''), name:'org'},
 								{type:"textarea", label:'Description', text: (data.description || 'Description'), value: (data.description || ''), name:'description'}					

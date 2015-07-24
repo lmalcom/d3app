@@ -8,7 +8,7 @@ define(['jquery', 'underscore', 'backbone', 'UIElement'], function($, _, Backbon
 		}),
 		Model: UIElement.Model.extend({
 			defaults: {
-				src: 'images/img.jpg',
+				src: '/media/images/img.jpg',
 				alt: '', 
 				view: 'Image'
 			}

@@ -27,7 +27,7 @@ define(['jquery', 'underscore', 'backbone', 'Button'], function($, _, Backbone, 
 			defaults: {
 				message: 'social', 
 				name: 'Google', 
-				image: 'images/googlesmall.jpg',
+				image: '/media/images/googlesmall.jpg',
 				view: 'SocialMediaButton', 
 				href:"https://www.linkedin.com/uas/oauth2/authorization?client_id=7t9knttib68z&redirect_uri=www.google.com&response_type=json&scope=r_fullprofile%20r_network"
 			}

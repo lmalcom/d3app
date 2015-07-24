@@ -17,7 +17,7 @@ define(['jquery', 'underscore', 'backbone', 'Button'], function($, _, Backbone, 
 		Model: Button.Model.extend({
 			defaults: {
 				message: 'show',
-				src: 'images/samplePerson.jpg', 
+				src: '/media/images/samplePerson.jpg', 
 				personIndex: 0, 
 			}
 		}),

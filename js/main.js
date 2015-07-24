@@ -1,5 +1,5 @@
 require.config({
-	baseUrl:'./js/classes', 
+	baseUrl:'/media/js/classes', 
 	shim : {
 		underscore : 
 		{

@@ -39,7 +39,7 @@ define(['jquery', 'underscore', 'backbone', 'UIElement'], function($, _, Backbon
 				}); 
 
 				//submit button
-				text+= '<input type="submit" class="btn" disabled="disabled" value="Submit"></input>'; 
+				text+= '<input type="submit" class="btn" disabled="disabled" value="Submit"></input> <p class="error" style="color:red;"></p>'; 
 				return _.template(text); 
 			}, 
 			changeFile: function(ev){ 
@@ -153,17 +153,23 @@ define(['jquery', 'underscore', 'backbone', 'UIElement'], function($, _, Backbon
 						if(data && data.token){
 							controller.set('token', data.token); 
 							var profilePage = controller.collection.where({href: 'profile'})[0]; 	
-							profilePage.updateProfile(); 						
+							profilePage.updateProfile(); 		
+
+							//set connections page urls 
+							var connectionsPage = controller.collection.where({href: 'connections'})[0]; 
+							connectionsPage.updateURLs(data.token); 		
 						}
 
 						//hide login modal
 				    	$('#Modal').css({
 				    		opacity: 0, 
 				    		'pointer-events':'none'
-				    	}); 
+				    	});
+				    	form.$el.find('.error').hide();  
 					}, 
 					error: function(err){
 						console.log('error!: ', err.responseText); 
+						form.$el.find('.error').html(err.responseText); 
 					}
 				}; 
 

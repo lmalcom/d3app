@@ -147,7 +147,7 @@ define(['jquery', 'underscore', 'backbone', 'd3', 'UIElement'], function($, _, B
 							})
 							.append("xhtml")
 						    	.html('<div></div>')						    	
-						    	.style('background-image', 'url("images/logo.png")');
+						    	.style('background-image', 'url("/media/images/logo.png")');
 						root.transition().duration(1000)
 						    .attr('x', function(d, i){  
 								return xrange((i)/(node.length - 1)) - 25 + 'px'

@@ -9,7 +9,7 @@ define(['jquery', 'underscore', 'backbone', 'd3', 'Page', 'Map', 'UserInfo'], fu
 		},
 		masterList: {
 			'john': {
-					image: 'images/logo.png',
+					image: '/media/images/logo.png',
 					name: 'John Doe', 
 					title: 'Financial Analyst', 
 					organization: 'Goldman Sachs', 
