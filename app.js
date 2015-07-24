@@ -1,23 +1,13 @@
 var fs 		= require("fs"); 
 var express = require("express"); 
-var config  = JSON.parse(fs.readFileSync("config.json")); 
-var host = config.host; 
-var port = config.port; 
+// var config  = JSON.parse(fs.readFileSync("config.json")); 
+// var host = config.host; 
+// var port = config.port; 
 var app = express(); 
-app.listen(process.env.VCAP_APP_PORT || 9000); 
+app.listen(9000); 
 var socketio = require('socket.io').listen(9901, '107.23.45.102'); 
 console.log('starting the server'); 
 
-
-//basic settings 
-// app.configure(function(){	
-// 	app.use(express.cookieParser()); 
-// 	app.use(express.session({secret: 'secret variable that gets hashed, omg!'})); 
-// 	app.use(express.bodyParser()); 
-// 	app.use(express.methodOverride()); 
-// 	app.use(app.router); 
-// 	app.use(express.static(__dirname));  
-// });  
 
 function sendIndex(req, res){ 
 	var html; 
